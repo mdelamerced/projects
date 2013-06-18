@@ -77,7 +77,7 @@ exports.delete_photo = function(req, res) {
     } else {
 
       // delete from S3
-      s3.client.deleteObject({Bucket: 'dwd_uploads', Key: photo.image}, function(err, data) {
+      s3.client.deleteObject({Bucket: 'citadel-project', Key: photo.image}, function(err, data) {
         console.log(err, data)
 
         // delete from MongoDB
@@ -127,7 +127,7 @@ exports.new_photo = function(req, res){
   fs.readFile(path, function(err, file_buffer){
 
     // pick the Amazon S3 Bucket
-    var s3bucket = new AWS.S3({params: {Bucket: 'dwd_uploads'}});
+    var s3bucket = new AWS.S3({params: {Bucket: 'citadel-project'}});
     
     // Set the bucket object properties
     // Key == filename
